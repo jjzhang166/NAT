@@ -1,0 +1,15 @@
+Служба обхода протокола NAT
+Real Time Systems DD
+www.rtsdd.ru
+NATTraversalX64
+x64
+NATTraversalX64
+1.0.1
+
+NAT Traversal Configuration Tool
+NAT Traversal System
+
+User's Programs Menu
+	Real Time Systems DD
+		NAT Traversal System
+NATTraversal.sln

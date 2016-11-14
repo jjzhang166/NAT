@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="ru"/>
+    <title>Инструмент конфигурирования службы обхода NAT.</title>
+    <link type="text/css" href="NAT_TRAVERSAL.CSS" rel="Stylesheet" />
+    <link type="text/css" href="MENU_FLAT.CSS" rel="stylesheet" />
+</head>
+<body id="CNATTraversalConfigDlg" class="form_body"
+>
+<table width="100%" border="0" cellspacing="0"
+style="border-style: none; border-width: 0; margin: 0; background-color: #d0d0d0;"
+>
+<tr>
+    <td
+    style="width: 100%; height: 26px;"
+    >
+    </td>
+    <td
+    style="width: 26px; text-align: center; vertical-align: middle;"
+    >
+        <input type="image"
+        src="QUESTION48.GIF"
+        id="about_icon"
+        alt='О программе "NATTraversalConfig"'
+        style="vertical-align:middle; width:24px; height:24px; border-style:none; background-color: transparent;"
+        />
+    </td>
+</tr>
+</table>
+<div id="page_frame" class="page_frame">
+    <center>
+        <table width="100%" style="border: none;">
+        <tr>
+            <td>
+                <img alt='Программа "NATTraversalConfig"'
+                src="APP_TITLE.GIF" style="border: 0"
+                title='Программа "NATTraversalConfig"'
+                width="100%"
+                height="50px"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="welcome_block"
+                style="DISPLAY: block; FONT-SIZE: 11pt; WIDTH: 100%; COLOR: green; FONT-FAMILY: Tahoma"
+                >
+                    Программа <span style="text-decoration: underline; font-style: italic;"
+                    >&#171;Инструмент конфигурирования службы обхода NAT&#187;</span>.<br />
+                    Версия:&nbsp;<span id="Span1">1.0.0001.0001&nbsp;&beta;</span>.<br />
+                    Программа предназначена для конфигурирования службы обхода NAT.<br />
+                    Служба обхода NAT представляет собой набор IP фильтров WFP (Windows Filtering Platform) 
+                    и служит для исключения публичных IP адресов локальной сети из области действия протокола 
+                    NAT (Network Address Translation -- МАСКАРАДИНГ) и для фильтрации входящих соединений 
+                    путём запрета выбранных TCP/UDP-портов.<br />
+                    Конфигурирование службы заключается в установке небходимых параметров указанных выше 
+                    фильтров.<br />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="settings_table" width="100%">
+                    <tr>
+                        <td colspan="2"
+                        style="text-align:left; font-weight:bold;"
+                        >
+                            Параметры публичных сервисов:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="width: 50%;">Папка, содержащяя исполняемый файл сервиса:</td>
+                        <td>
+                            <input id="executable_path" type="text" style="width: 80%;" />
+                            &nbsp;
+                            <button id="executable_path_button"
+                            title='Обзор папок'
+                            style="width: 16%"
+                            ><img alt='Обзор папок'
+                                height="16" src="OPENFOLDERHS.PNG"
+                                style="vertical-align: middle" width="16" />
+                                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                                    Обзор
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="width: 50%;">Адрес публичного интерфейса маршрутизатора (доступ в глобальную сеть):</td>
+                        <td>
+                            <input id="public_router_ip" type="text" style="width: 10em;" />
+                            &nbsp;
+                            <button id="test_public_router_ip_button"
+                            title='Проверить IP-адрес интерфейса'
+                            style="width: 70px"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="public_ip_row_template">
+                        <td id="public_ip_description" align="right" style="width: 50%;">Одиночный публичный IP-адрес:</td>
+                        <td id="public_ip_cell">
+                            <input type="image"
+                            id="insert_public_ip"
+                            alt="Вставить новое значение отдельного публичного IP-адреса"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border:1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_public_ip"
+                            alt="Удалить значение публичного IP-адреса"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="public_ip" type="text" style="width: 10em; visibility: hidden;" />
+                            &nbsp;
+                            <button id="test_public_ip_button"
+                            title='Проверить формат публичного IP-адреса'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="public_range_row_template">
+                        <td id="public_range_description" align="right" style="width: 50%;">Диапазон публичных IP-адресов:</td>
+                        <td id="public_range_cell">
+                            <input type="image"
+                            id="insert_public_range"
+                            alt="Вставить новый диапазон публичных IP-адресов"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border: 1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_public_range"
+                            alt="Удалить диапазон публичных IP-адресов"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="range_begin" type="text" style="width: 10em; visibility: hidden;"
+                            title="Начальное значение диапазона публичных IP-адресов"
+                            />
+                            <span id="range_symbol"
+                            style="font-family: Symbol; vertical-align: top; visibility: hidden;"
+                            >&#184;</span>
+                            <input id="range_end" type="text" style="width: 10em; visibility: hidden;"
+                            title="Конечное значение диапазона публичных IP-адресов"
+                            />
+                            &nbsp;
+                            <button id="test_public_range_button"
+                            title='Проверить формат диапазона публичных IP-адресов'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="public_subnet_row_template">
+                        <td id="public_subnet_description" align="right" style="width: 50%;">
+                            Публичная подсеть (формат: 
+                            <span style="border: 1px solid black; text-align: center; width:60px;">АДРЕС</span> - 
+                            <span style="border: 1px solid black; text-align: center; width:60px;">МАСКА</span> ):
+                        </td>
+                        <td id="public_subnet_cell">
+                            <input type="image"
+                            id="insert_public_subnet"
+                            alt="Вставить новую публичную IP-подсеть"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border: 1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_public_subnet"
+                            alt="Удалить публичную IP-подсеть"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="subnet_address" type="text" style="width: 10em; visibility: hidden;"
+                            title="IP-адрес публичной подсети"
+                            />
+                            <span id="subnet_symbol"
+                            style="vertical-align: top; visibility: hidden;"
+                            > - </span>
+                            <input id="subnet_mask" type="text" style="width: 10em; visibility: hidden;"
+                            title="Маска публичной IP-подсети"
+                            />
+                            &nbsp;
+                            <button id="test_public_subnet_button"
+                            title="Проверить формат значения публичной IP-подсети"
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"
+                        style="text-align:left; font-weight:bold;"
+                        >
+                            Параметры приватных подсетей:
+                        </td>
+                    </tr>
+                    <tr id="private_ip_row_template">
+                        <td id="private_ip_description" align="right" style="width: 50%;">Одиночный приватный IP-адрес:</td>
+                        <td id="private_ip_cell">
+                            <input type="image"
+                            id="insert_private_ip"
+                            alt="Вставить новое значение отдельного приватного IP-адреса"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border:1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_private_ip"
+                            alt="Удалить значение приватного IP-адреса"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="private_ip" type="text" style="width: 10em; visibility: hidden;" />
+                            &nbsp;
+                            <button id="test_private_ip_button"
+                            title='Проверить формат приватного IP-адреса'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="private_range_row_template">
+                        <td id="private_range_description" align="right" style="width: 50%;">Диапазон приватных IP-адресов:</td>
+                        <td id="private_range_cell">
+                            <input type="image"
+                            id="insert_private_range"
+                            alt="Вставить новый диапазон приватных IP-адресов"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border: 1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_private_range"
+                            alt="Удалить диапазон приватных IP-адресов"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="private_range_begin" type="text" style="width: 10em; visibility: hidden;"
+                            title="Начальное значение диапазона приватных IP-адресов"
+                            />
+                            <span id="private_range_symbol"
+                            style="font-family: Symbol; vertical-align: top; visibility: hidden;"
+                            >&#184;</span>
+                            <input id="private_range_end" type="text" style="width: 10em; visibility: hidden;"
+                            title="Конечное значение диапазона приватных IP-адресов"
+                            />
+                            &nbsp;
+                            <button id="test_private_range_button"
+                            title='Проверить формат диапазона приватных IP-адресов'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="private_subnet_row_template">
+                        <td id="private_subnet_description" align="right" style="width: 50%;">
+                            Приватная подсеть (формат: 
+                            <span style="border: 1px solid black; text-align: center; width:60px;">АДРЕС</span> - 
+                            <span style="border: 1px solid black; text-align: center; width:60px;">МАСКА</span> ):
+                        </td>
+                        <td id="private_subnet_cell">
+                            <input type="image"
+                            id="insert_private_subnet"
+                            alt="Вставить новую приватную IP-подсеть"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border: 1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_private_subnet"
+                            alt="Удалить приватную IP-подсеть"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="private_subnet_address" type="text" style="width: 10em; visibility: hidden;"
+                            title="IP-адрес приватной подсети"
+                            />
+                            <span id="private_subnet_symbol"
+                            style="vertical-align: top; visibility: hidden;"
+                            > - </span>
+                            <input id="private_subnet_mask" type="text" style="width: 10em; visibility: hidden;"
+                            title="Маска приватной IP-подсети"
+                            />
+                            &nbsp;
+                            <button id="test_private_subnet_button"
+                            title="Проверить формат значения приватной IP-подсети"
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"
+                        style="text-align:left; font-weight:bold;"
+                        >
+                            Список запрещенных входящих IP-портов:
+                        </td>
+                    </tr>
+                    <tr id="ip_port_row_template">
+                        <td id="ip_port_description" align="right" style="width: 50%;">Одиночный запрещённый входящий IP-порт:</td>
+                        <td id="ip_port_cell">
+                            <input type="image"
+                            id="insert_ip_port"
+                            alt="Вставить новое значение отдельного запрещённого входящего IP-порта"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border:1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_ip_port"
+                            alt="Удалить значение отдельного запрещённого входящего IP-порта"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="ip_port"
+                            type="text"
+                            style="width:10em; visibility:hidden; text-align:left;"
+                            />
+                            &nbsp;
+                            <button id="test_ip_port_button"
+                            title='Проверить значение отдельного запрещённого входящего IP-порта'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                    <tr id="range_port_row_template">
+                        <td id="range_ip_description" align="right" style="width: 50%;">Диапазон запрещённых входящих IP-портов:</td>
+                        <td id="range_ip_port_cell">
+                            <input type="image"
+                            id="insert_ip_port_range"
+                            alt="Вставить новый диапазон запрещённых входящих IP-портов"
+                            src="NEWRECORDHS.PNG"
+                            style="vertical-align:bottom; border: 1px solid black; position: absolute;"
+                            />
+                            <input type="image"
+                            id="delete_ip_port_range"
+                            alt="Удалить диапазон запрещённых входящих IP-портов"
+                            src="DELETEHS.PNG"
+                            style="vertical-align:bottom; visibility:hidden; border: 1px solid black;"
+                            />
+                            &nbsp;
+                            <input id="ip_port_range_begin" type="text" style="width: 10em; visibility: hidden;"
+                            title="Начальное значение диапазона запрещённых входящих IP-портов"
+                            />
+                            <span id="range_symbol02"
+                            style="font-family: Symbol; vertical-align: top; visibility: hidden;"
+                            >&#184;</span>
+                            <input id="ip_port_range_end" type="text" style="width: 10em; visibility: hidden;"
+                            title="Конечное значение диапазона запрещённых входящих IP-портов"
+                            />
+                            &nbsp;
+                            <button id="test_ip_port_range_button"
+                            title='Проверить значение диапазона запрещённых входящих IP-портов'
+                            style="width: 70px; visibility: hidden;"
+                            >Проверить</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+        <td align="center" colspan="1">
+            <button id="setup_button"
+            title='Установка сервиса обхода NAT'
+            style="width: 170px;"
+            ><img id="setup_image" alt='Установка сервиса обхода NAT'
+                height="16" src="SETUP.GIF"
+                style="vertical-align: middle" width="16" />
+                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                    Установка сервиса
+                </span>
+            </button>
+            &nbsp;
+            <button id="uninstall_button"
+            title='Деинсталяция сервиса обхода NAT'
+            style="width: 170px;"
+            ><img id="uninstall_image" alt='Деинсталяция сервиса обхода NAT'
+                height="16" src="UNINSTALL32.PNG"
+                style="vertical-align: middle" width="16" />
+                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                    Деинсталяция сервиса
+                </span>
+            </button>
+            &nbsp;
+            <button id="save_button"
+            title='Сохранить значения парметров в реестре'
+            style="width: 170px;"
+            ><img alt='Сохранить значения парметров в реестре'
+                height="16" src="SAVEHS.PNG"
+                style="vertical-align: middle" width="16" />
+                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                    Сохранить значения
+                </span>
+            </button>
+            <br />
+            <button id="load_button"
+            title='Загрузить параметры из реестра'
+            style="width: 170px;"
+            ><img alt='Загрузить параметры из реестра'
+                height="16" src="PREVIOUSPAGEHS.PNG"
+                style="vertical-align: middle" width="16" />
+                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                    Загрузить параметры
+                </span>
+            </button>
+            &nbsp;
+            <button id="restart_button"
+            title='Перезапустить службу обхода NAT'
+            style="width: 170px;"
+            ><img alt='Перезапустить службу обхода NAT' id="restart_image"
+                height="16" src="RESTARTHS.PNG"
+                style="vertical-align: middle" width="16" />
+                <span style= "WIDTH: 80%; CURSOR: default; TEXT-ALIGN: center">
+                    Перезапустить службу
+                </span>
+            </button>
+            &nbsp;
+            <button id="exit_button" style="width: 170px"
+            title='Завершение работы программы "NATTraversalConfig"'
+            ><img alt='Завершение работы программы "NATTraversalConfig"'
+                height="16" width="16"
+                src="EXIT.GIF" style="vertical-align: middle"
+                />
+                <span style="width: 80%; cursor: default; text-align: center">
+                    Завершение работы
+                </span>
+            </button>
+        </td>
+        </tr>
+        </table>
+    </center>
+</div>
+<div class="bottom_bar">
+    <table class="bottom_bar"
+    id="copyright_table"
+    >
+        <tr style="height: 0;">
+            <td style="width: 50%;"></td>
+            <td style="width: 50%;"></td>
+            <td style="width: 49px;"></td>
+        </tr>
+        <tr style="color: Blue;">
+            <td colspan="1" class="clsVersion">
+                <i style="margin-left: 6px;">"NATTraversalConfig" v <span id="version_str">
+                    1.0.0001.0001 &beta;</span> </i>
+            </td>
+            <td align="right" colspan="2" class="clsCopyright">
+                Системы Реального Времени DD &copy; 2012
+            </td>
+        </tr>
+        <tr>
+            <td id="status_text" class="status_bar_text"
+            colspan="2"
+            >
+                status_text
+            </td>
+            <td class="status_image">
+                <img id="status_image"
+                style="border: none; vertical-align: middle;"
+                src="NON_RUN_STATUS.GIF"
+                alt="Статус исполнения"
+                />
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

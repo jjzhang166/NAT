@@ -1,0 +1,110 @@
+;/*++
+;
+;Copyright (c) Real Time Systems DD.  All rights reserved.
+;
+;    THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+;    KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+;    IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+;    PURPOSE.
+;
+;Module Name:
+;
+;    nattraverse_kmdffilter.inf -- NAT Traversal IP port filter driver
+;
+;Abstract:
+;
+;    INF file for installing toaster device drivers (and, optionally, value-
+;    added software) via device-specific coinstaller.
+;    This is a mutlios INF file. Same INF file cab be used on
+;    x86, ia64 and amd64 platforms.
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=WDF_Legacy_Class
+ClassGuid={D85A0B83-3E46-479A-9D87-3DC02672E6AC}
+Provider=%ManufacturerName%
+CatalogFile=nattraverse_kmdffilter.cat
+DriverVer=
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=WDFLegacyClassReg
+
+[WDFLegacyClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+nattraverse_kmdffilter.sys  = 1,,
+rtsddWDKTestCert.cer=1
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%nattraverse_kmdffilter.DeviceDesc%=nattraverse_kmdffilter_Device, Root\nattraverse_kmdffilter
+
+[nattraverse_kmdffilter_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+nattraverse_kmdffilter.sys
+
+;-------------- Service installation
+[nattraverse_kmdffilter_Device.NT.Services]
+AddService = nattraverse_kmdffilter,%SPSVCINST_ASSOCSERVICE%, nattraverse_kmdffilter_Service_Inst
+
+; -------------- nattraverse_kmdffilter driver install sections
+[nattraverse_kmdffilter_Service_Inst]
+DisplayName    = %nattraverse_kmdffilter.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\nattraverse_kmdffilter.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- nattraverse_kmdffilter_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+nattraverse_kmdffilter_Device_CoInstaller_CopyFiles = 11
+
+[nattraverse_kmdffilter_Device.NT.CoInstallers]
+AddReg=nattraverse_kmdffilter_Device_CoInstaller_AddReg
+CopyFiles=nattraverse_kmdffilter_Device_CoInstaller_CopyFiles
+
+[nattraverse_kmdffilter_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[nattraverse_kmdffilter_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[SourceDisksFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+[nattraverse_kmdffilter_Device.NT.Wdf]
+KmdfService =  nattraverse_kmdffilter, nattraverse_kmdffilter_wdfsect
+[nattraverse_kmdffilter_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Real Time Systems DD"
+ClassName="WDF_Legacy_Class"
+DiskName = "nattraverse_kmdffilter Installation Disk"
+nattraverse_kmdffilter.DeviceDesc = "NAT Traverse Filters sofware Device"
+nattraverse_kmdffilter.SVCDESC = "NAT Traverse Filters Service"

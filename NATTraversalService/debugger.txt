@@ -1,0 +1,15 @@
+-		$!pPortsPart	0xfffffa80`311ac86c struct _IP_HEADER_PORT_PART *	struct _IP_HEADER_PORT_PART *
+		_IHL	0x00 ''	unsigned char
+		_Version	0x00 ''	unsigned char
+		_Type_of_Service	0x15 ''	unsigned char
+		_Total_Length	0n64349	unsigned short -- 0xFB5D 0x5DFB
+		_Identification	0n529	unsigned short
+		_Fragment_Offset	0n2624	unsigned short
+		_Flags	0n2	unsigned short
+		_Time_to_Live	0x03 ''	unsigned char
+		_Protocol	0x39 '9'	unsigned char
+		_Header_Checksum	0n6706	unsigned short
+		_Source_Address	0n4521992	unsigned long -- 450008 0x08.0x00.0x45.0x00 8.0.69.0
+		_Destination_Address	0n1814505472	unsigned long -- 0x6C272800  0.40.39.108
+		srcPort	0n64	unsigned short
+		destPort	0n1659	unsigned short

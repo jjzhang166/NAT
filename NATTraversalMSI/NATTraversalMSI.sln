@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NATTraversalX64", "NATTraversalX64\NATTraversalX64.vdproj", "{A972A85D-0CFA-4CA2-859B-6E34CB5B6D38}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NATTraversalX86", "NATTraversalX86\NATTraversalX86.vdproj", "{085CBAD6-0DC2-41AE-9D45-13085DB48CE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A972A85D-0CFA-4CA2-859B-6E34CB5B6D38}.Debug|Default.ActiveCfg = Debug
+		{A972A85D-0CFA-4CA2-859B-6E34CB5B6D38}.Debug|Default.Build.0 = Debug
+		{A972A85D-0CFA-4CA2-859B-6E34CB5B6D38}.Release|Default.ActiveCfg = Release
+		{A972A85D-0CFA-4CA2-859B-6E34CB5B6D38}.Release|Default.Build.0 = Release
+		{085CBAD6-0DC2-41AE-9D45-13085DB48CE4}.Debug|Default.ActiveCfg = Debug
+		{085CBAD6-0DC2-41AE-9D45-13085DB48CE4}.Debug|Default.Build.0 = Debug
+		{085CBAD6-0DC2-41AE-9D45-13085DB48CE4}.Release|Default.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

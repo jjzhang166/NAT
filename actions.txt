@@ -1,0 +1,31 @@
+cd /d C:\remote_projects\NATTraversal
+NATTraversalService -instdriver
+NATTraversalService -uninstdriver
+
+net start nattraverse_kmdffilter
+net stop nattraverse_kmdffilter
+
+net stop dnsfilter
+
+NATTraversalService -h
+
+\\Rtsdd-server\d\vs11projects\NATTraversal\NATTraversalMSI\NATTraversalX64\Debug\NATTraversalX64.msi
+cd /d "C:\Program Files\Real Time Systems DD\NAT Traversal System"
+NATTraversalService -install -start_mode=manual
+C:\remote_projects\NATTraversal\NATTraversalConfig.reg
+NATTraversalService -uninstall
+net start NATTraversalService
+NATTraversalConfig.exe
+
+net stop NATTraversalService
+
+"C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\ntsd.exe" -server tcp:port=32223 -noio
+"C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\cdb.exe" -server tcp:port=32223
+
+tcp:port=32223,server=rtsdd-server
+
+.reload /f @"NATTraversalService.exe"
+.reload /f @"nattraverse_kmdffilter.sys"
+
+cd \
+msiexec /uninstall \\Rtsdd-server\d\vs11projects\NATTraversal\NATTraversalMSI\NATTraversalX64\Debug\NATTraversalX64.msi

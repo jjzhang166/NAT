@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="ru"/>
+    <title>Системы Реального Времени DD (окно сообщений)</title>
+    <script language="javascript" type="text/javascript">
+        function init_dialog() {
+            ButtonOK.focus();
+        }
+    </script>
+</head>
+<body id="CRTSDDMessageBox"
+style="background-image: url(DIALOG-BACKGROUND.JPG); overflow: hidden; padding: 10px; margin: 0;"
+onload="init_dialog();"
+>
+<table width="100%">
+<tr>
+    <td rowspan="2">
+        <img src="RTS_LOGO.GIF" width="200px"
+        alt='Системы Реального Времени DD'
+        />
+    </td>
+    <td id="message_type_cell">
+        <img id="message_type_img" src="ERROR_ICON.PNG" width="120px"
+        alt="Тип сообщения"
+        />
+    </td>
+    <td id="message_text"
+    style="font-family: Arial; font-size: 9pt; border-style:solid; border-color: Blue; border-width: 1px; color: Blue; padding: 6px; text-align: left; width: 100%;"
+    >message_text</td>
+</tr>
+<tr>
+    <td colspan="2"
+    style="font-family: Arial; font-size: 9pt; border-style:solid; border-color: Blue; border-width: 1px; color: Blue; padding: 6px; text-align: center;"
+    >
+        <span style="text-decoration: underline; font-style: italic;">
+            Системы Реального Времени DD.
+        </span><br />
+        Разработка программного и аппаратного обеспечения систем автоматического 
+        управления и систем цифровой обработки сигналов.<br />
+        Главный архитектор систем <a tabindex="2" href="mailto:dukov54@mail.ru" target="_blank"
+        >Сергей&nbsp;Дюков</a>.
+    </td>
+</tr>
+<tr>
+    <td
+    style="font-family: Arial; font-size: 8pt; border-style:solid; border-color: Gray; border-width: 1px; color: Gray; padding: 6px; text-align: left;"
+    >
+        &#171;Инструмент конфигурирования службы обхода NAT&#187; 
+        Версия:&nbsp;<span id="version_str">x.x.xxxx.xxxx&nbsp;&beta;</span>
+    </td>
+    <td colspan="2"
+    style="font-family: Arial; font-size: 8pt; border-style:solid; border-color: Gray; border-width: 1px; color: Gray; padding: 6px; text-align: right;"
+    >
+        Системы Реального Времени DD &copy; 2012
+    </td>
+</tr>
+</table>
+<center>
+    <input type="submit" id="ButtonOK" value="OK" tabindex="1"
+    style="width: 60px; font-size: 9pt; width: 50%;"
+    />
+</center>
+</body>
+</html>

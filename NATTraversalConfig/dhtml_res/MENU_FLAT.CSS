@@ -1,0 +1,309 @@
+DIV.menu_bar
+{
+    font-weight: bold;
+    font-size: 10pt;
+    left: 0px;
+    overflow: visible;
+    width: 100%;
+    color: black;
+    border-top-style: none;
+    font-family: Arial;
+    border-right-style: none;
+    border-left-style: none;
+    top: 0px;
+    height: 23px;
+    background-color: menu;
+    border-bottom-style: none;
+}
+DIV.item_vborder
+{
+    z-index: 200;
+    background-image: url(SUB-BUTTON1-TILE.GIF);
+    width: 3px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    height: 19px;
+    border-bottom-style: none;
+}
+DIV.item_border
+{
+    z-index: 420;
+    background-image: url(SUB-BUTTON1-TILE.GIF);
+    width: 6px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    height: 19px;
+    border-bottom-style: none;
+}
+IMG.button_image
+{
+    display: none;
+    z-index: 500;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    border-bottom-style: none;
+}
+DIV.menu_bar_item
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 400;
+    padding-bottom: 0px;
+    margin: 0px;
+    overflow: visible;
+    cursor: default;
+    color: black;
+    border-top-style: none;
+    padding-top: 0px;
+    font-family: Arial;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 1px;
+    height: 20px;
+    text-align: center;
+    border-bottom-style: none;
+}
+DIV.menu_bar_popup_button
+{
+    border-right: #808080 1px solid;
+    border-top: #808080 1px solid;
+    display: none;
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 400;
+    overflow: visible;
+    border-left: #808080 1px solid;
+    cursor: default;
+    color: black;
+    font-family: Arial;
+    position: absolute;
+    top: 0px;
+    height: 20px;
+    background-color: #dcdcd4;
+    text-align: center;
+    border-bottom-style: none;
+}
+DIV.menu_vitem
+{
+    display: block;
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 450;
+    left: 0px;
+    overflow: visible;
+    width: 100%;
+    cursor: default;
+    border-top-style: none;
+    font-family: Arial;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    height: 20px;
+    background-color: transparent;
+    text-align: left;
+    border-bottom-style: none;
+}
+DIV.menu_highlight_item
+{
+    border-right: #808080 1px solid;
+    border-top: #808080 1px solid;
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 450;
+    left: 0px;
+    overflow: visible;
+    border-left: #808080 1px solid;
+    width: 100%;
+    cursor: default;
+    border-bottom: #808080 1px solid;
+    font-family: Arial;
+    position: absolute;
+    height: 21px;
+    background-color: #c2a8c8;
+    text-align: left;
+}
+DIV.blue_strip
+{
+    font-size: 0pt;
+    width: 100%;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    height: 1px;
+    background-color: blue;
+    border-bottom-style: none;
+}
+IMG.button_bullet
+{
+    z-index: 700;
+    left: 4px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 2px;
+    border-bottom-style: none;
+}
+DIV.button_text
+{
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 700;
+    left: 28px;
+    width: 100%;
+    color: black;
+    border-top-style: none;
+    font-family: Arial;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 0px;
+    height: 19px;
+    border-bottom-style: none;
+}
+DIV.button_ctext
+{
+    font-weight: bold;
+    font-size: 10pt;
+    z-index: 700;
+    left: 0px;
+    color: black;
+    border-top-style: none;
+    font-family: Arial;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 0px;
+    height: 19px;
+    text-align: center;
+    border-bottom-style: none;
+}
+IMG.item_bkground
+{
+    z-index: 450;
+    left: 0px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 0px;
+    border-bottom-style: none;
+}
+IMG.item_separator
+{
+    z-index: 410;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    border-bottom-style: none;
+    left: 28px;
+}
+DIV.menu_group_box
+{
+    border: #808080 1px solid;
+    display: none;
+    z-index: 400;
+    overflow: visible;
+    position: absolute;
+    background-color: #f0f0f0;
+}
+DIV.main_menu_group_box
+{
+    border-right: #808080 1px solid;
+    border-top-style: none;
+    display: none;
+    z-index: 400;
+    overflow: visible;
+    border-left: #808080 1px solid;
+    border-bottom: #808080 1px solid;
+    position: absolute;
+    background-color: #f0f0f0;
+}
+DIV.context_menu_box
+{
+    border: #808080 1px solid;
+    z-index: 400;
+    overflow: visible;
+    position: absolute;
+    background-color: #f0f0f0;
+    display: none;
+}
+IMG.menu_header
+{
+    z-index: 420;
+    left: 0px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: -1px;
+    height: 5px;
+    border-bottom-style: none;
+}
+IMG.menu_footer
+{
+    z-index: 420;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    border-bottom-style: none;
+}
+BR.non_display_break
+{
+    display: none;
+}
+DIV.bullet_area
+{
+    display: block;
+    z-index: 410;
+    left: 0px;
+    width: 24px;
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    background-color: #dcdcd4;
+}
+DIV.menu_delimitor
+{
+    font-size: 0pt;
+    z-index: 410;
+    left: 28px;
+    width: 170px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    height: 0px;
+    background-color: #808080;
+    border-bottom-style: none;
+}
+IFRAME.dialog_frame
+{
+    padding-right: 0px;
+    display: none;
+    padding-left: 0px;
+    z-index: 200;
+    left: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    width: 0px;
+    border-top-style: none;
+    padding-top: 0px;
+    border-right-style: none;
+    border-left-style: none;
+    position: absolute;
+    top: 0px;
+    height: 0px;
+    border-bottom-style: none;
+}
